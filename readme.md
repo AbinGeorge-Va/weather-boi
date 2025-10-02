@@ -30,6 +30,8 @@ The following dependencies are used in this project:
 4. Set up your `.env` file with your bot token:
     ```env
     DISCORD_TOKEN=your-bot-token
+    OPENWEATHER_API_KEY=you-openweather-key
+    WEATHERAPI_API_KEY=you-weatherapi-key
     ```
 
 ## Usage
