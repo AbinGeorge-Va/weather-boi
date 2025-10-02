@@ -1,6 +1,6 @@
 # Discord Weather Bot
 
-A Discord bot that provides weather information using OpenWeatherMap and WeatherAPI.com. The bot can fetch current weather, 3-day forecasts, and 7-day weather history for a given city.
+A Discord bot that provides weather information using OpenWeatherMap and WeatherAPI.com. The bot can fetch current weather, 3-day forecasts, and 7-day weather history for a given city. This is my first attempt at creating a Discord bot using JavaScript and the discord.js library.
 
 ## Features
 
