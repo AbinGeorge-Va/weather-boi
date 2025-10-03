@@ -4,12 +4,13 @@ A Discord bot that provides weather information using OpenWeatherMap and Weather
 
 ## Features
 
+- **Slash Commands** for weather queries (no prefix needed, just `/weather ...`)
 - **OpenWeatherMap Integration**:
-  - Get current weather for a city using the `!ow` command.
+  - Get current weather for a city.
 - **WeatherAPI.com Integration**:
-  - Get current weather for a city using the `!wa` command.
-  - Get a 3-day weather forecast using the `!wa forecast` command.
-  - Get a 7-day weather history using the `!wa history` command.
+  - Get current weather for a city.
+  - Get a 3-day weather forecast.
+  - Get a 7-day weather history.
 
 ## Prerequisites
 
@@ -18,6 +19,7 @@ A Discord bot that provides weather information using OpenWeatherMap and Weather
 - API keys for:
   - [OpenWeatherMap](https://openweathermap.org/api)
   - [WeatherAPI.com](https://www.weatherapi.com/)
+- Your Discord application's **Client ID** and your test server's **Guild ID** (for slash command deployment)
 
 ## Installation
 
@@ -37,30 +39,39 @@ A Discord bot that provides weather information using OpenWeatherMap and Weather
    token=YOUR_DISCORD_BOT_TOKEN
    OPENWEATHER_API_KEY=YOUR_OPENWEATHER_API_KEY
    WEATHERAPI_API_KEY=YOUR_WEATHERAPI_API_KEY
+   CLIENT_ID=YOUR_DISCORD_CLIENT_ID
+   GUILD_ID=YOUR_TEST_GUILD_ID
    ```
 
-4. Start the bot:
+4. Deploy the slash commands to your server:
    ```bash
-   node index.js
+   node deploy-commands.js
    ```
 
-## Commands
+5. Start the bot:
+   ```bash
+   node main.js
+   ```
 
-### OpenWeatherMap Commands
-- `!ow <city>`: Fetches the current weather for the specified city.
-  - Example: `!ow London`
+## Usage
 
-### WeatherAPI.com Commands
-- `!wa <city>`: Fetches the current weather for the specified city.
-  - Example: `!wa Paris`
-- `!wa forecast <city>`: Fetches a 3-day weather forecast for the specified city.
-  - Example: `!wa forecast Tokyo`
-- `!wa history <city>`: Fetches the 7-day weather history for the specified city.
-  - Example: `!wa history New York`
+Use the `/weather` slash command in your Discord server. The command supports the following options:
+
+### OpenWeatherMap
+- `/weather openweathermap current city:<city>`  
+  Get the current weather for a city using OpenWeatherMap.
+
+### WeatherAPI.com
+- `/weather weatherapi current city:<city>`  
+  Get the current weather for a city using WeatherAPI.com.
+- `/weather weatherapi forecast city:<city>`  
+  Get a 3-day weather forecast for a city.
+- `/weather weatherapi history city:<city>`  
+  Get the 7-day weather history for a city.
 
 ## Example Output
 
-### Current Weather (`!ow London`)
+### Current Weather (OpenWeatherMap)
 ```
 Weather in London
 Condition: Clear Sky
@@ -68,7 +79,7 @@ Condition: Clear Sky
 💧 Humidity: 60%
 ```
 
-### 3-Day Forecast (`!wa forecast Tokyo`)
+### 3-Day Forecast (WeatherAPI.com)
 ```
 3-Day Forecast for Tokyo
 🗓️ 2025-10-01: Clear Sky
@@ -82,7 +93,7 @@ Condition: Clear Sky
 📉 Low: 15°C
 ```
 
-### 7-Day History (`!wa history New York`)
+### 7-Day History (WeatherAPI.com)
 ```
 Last 7 Days of Weather History for New York
 🗓️ 2025-09-25: Avg: 18°C (High: 22°C, Low: 14°C)
@@ -95,6 +106,9 @@ Last 7 Days of Weather History for New York
 - **Bot not starting**:
   - Ensure your `.env` file is correctly configured.
   - Check that your Node.js version is 18 or higher.
+- **Slash commands not appearing**:
+  - Make sure you ran `node deploy-commands.js` and used the correct `CLIENT_ID` and `GUILD_ID`.
+  - It may take a minute for Discord to update the commands.
 - **Bot not responding to commands**:
   - Ensure the bot has the necessary permissions in your Discord server.
   - Check the logs for any errors.
